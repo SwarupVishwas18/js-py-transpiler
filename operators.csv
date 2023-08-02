@@ -1,0 +1,13 @@
+Operator,Python Equivalent,JavaScript Equivalent
++,+,+
+-,-,-
+*,*,*
+/,/,/
+//,//,Math.floor
+%,%,%
+**,**,Math.pow
+=,=,=
++=,+=,+=
+-=,-=,-=
+*=,*=,*=
+/=,/=,/=
