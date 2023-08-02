@@ -18,4 +18,3 @@ sorted,sorted,Array.from
 reversed,reversed,Array.reverse
 range,range,Array.from
 enumerate,enumerate,Object.entries
-zip,zip,N/A (See comments below)
