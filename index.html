@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js to py</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 <body>
     <nav>
@@ -22,6 +25,10 @@
     </div>
 </main>
 <div class="convert-btn">
+    <form action="?" method="POST">
+        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+        <br/>
+    </form>
     <button id="convert">Convert</button>
 </div>
 </body>
