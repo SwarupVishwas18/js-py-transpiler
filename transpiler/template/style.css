@@ -175,5 +175,21 @@ header {
 }
 
 .transpiler-svg img {
-    height: 80vh;
+    margin-top: -15px;
+    height: 87vh;
+}
+.box {
+    width: 100px;
+    height: 70px;
+}
+.menu-link
+{
+    top: 20px;
+}
+.box .menuimg {
+    position: absolute;
+    width: 96px;
+    height: 47px;
+    top: 10px;
+    left: 190vh;
 }

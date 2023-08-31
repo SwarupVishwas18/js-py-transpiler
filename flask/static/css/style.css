@@ -143,16 +143,18 @@ header {
     justify-content: center;
     gap: 3rem;
     margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: #0B2A3C;
 }
 
 .js-code,
 .py-code {
     width: 40vw;
     height: 50vh;
-    background-color: #0B2A3C;
+    background-color: #f3f3f3;
     border-radius: 12px;
     color: #DEEEFF;
-    padding: 1rem;
+    /* padding: 1rem; */
     overflow-y: scroll;
     font-family: 'Roboto Mono', monospace;
 }
