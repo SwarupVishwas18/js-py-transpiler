@@ -3,6 +3,7 @@ from fileinput import filename
 from flask import *
 from converter import js_to_python, indentToNbsp
 from readability import analyze_code
+from open import getComment
 
 app = Flask(__name__, template_folder="template")
 
@@ -16,9 +17,9 @@ def main():
         with open(js_path) as f:
             js_code = f.read()
         python_code = js_to_python(js_code)
-        js = js_code.split("\n")
-        python_code = indentToNbsp(python_code)
-        py = python_code.split("\n")
+        js = js_code
+        # python_code = indentToNbsp(python_code)
+        py = python_code
         print(py)
         return render_template("index.html", js=js, py=py)
     return render_template("index.html")
@@ -32,10 +33,9 @@ def comment():
         js_path = f.filename
         with open(js_path) as f:
             js_code = f.read()
-        python_code = js_to_python(js_code)
-        js = js_code.split("\n")
-        python_code = indentToNbsp(python_code)
-        py = python_code.split("\n")
+        python_code = getComment(js_code)
+        js = js_code
+        py = python_code
         print(py)
         return render_template("comment.html", js=js, py=py)
     return render_template("comment.html")
@@ -60,7 +60,8 @@ def codeindex():
         ) = analyze_code(py_path)
         with open(py_path) as f:
             py_code = f.read()
-            py = py_code.split("\n")
+            # py = py_code.split("\n")
+            py = py_code
 
         return render_template(
             "codeindex.html",

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comment</title>
+    <title>Comment Generator</title>
+    <link rel="icon" type="image" href="{{ url_for('static', filename='img/logo.jpg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dracula.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
@@ -60,8 +61,8 @@
         <main>
             <header>
                 <div class="upload-file">
-                    <form action="/" method="post" id="form" enctype="multipart/form-data">
-                        <input type="file" value="JS File" accept=".js" name="js-file" id="file-input"  hidden>
+                    <form action="/comment" method="post" id="form" enctype="multipart/form-data">
+                        <input type="file" value="JS File" accept=".py" name="js-file" id="file-input"  hidden>
                         <button class="custom-file-btn" id="custom-file-btn">
                             <img src="{{ url_for('static', filename='img/add.png') }}" alt="Add" width="20"> Upload Your Code
                         </button>
@@ -69,27 +70,29 @@
                 </div>  
     
             </header>
-    
-           
+
     
             <div class="transpilation-boxes">
                 <div class="js-code">
                     <pre>
                         <code class="language-javascript">
+{{ js }} 
                         </code>
                     </pre>
                 </div>
                 <div class="py-code">
                     <pre>
-                        <code class="language-python">
+                        <code class="generated">
+{{ py }} 
                         </code>
                     </pre>
                 </div>
+
             </div>
             
         </main>
 
-        <div class="transpiler-svg">
+        <div class="commentor-svg">
             <img src="{{ url_for('static', filename='img/Commentor.svg') }}"  alt="Commentor">
         </div>
     </div>

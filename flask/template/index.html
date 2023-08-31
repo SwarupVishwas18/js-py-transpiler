@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeoCode</title>
+    <link rel="icon" type="image" href="{{ url_for('static', filename='img/logo.jpg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dracula.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
@@ -88,27 +89,18 @@
                 <div class="js-code">
                     <pre>
                         <code class="language-javascript">
-{% for code in js %}
-{{ code }} 
-{% endfor %}
+{{js}}
 </code>
                     </pre>
                 </div>
                 <div class="py-code">
                     <pre>
                         <code class="language-python">
-{% for code in py %}
-{{ code }} 
-{% endfor %}
-</code>
+{{py}}
+                        </code>
                     </pre>
                 </div>
             </div>
-            <!-- <div class="center-btn-container">
-                <button class="transpile-btn">
-                    <img src=".{{ url_for('static', filename='img/Refresh.png') }}" alt="Refresh" width="20"> Transpile
-                </button>
-            </div> -->
         </main>
 
         <div class="transpiler-svg">

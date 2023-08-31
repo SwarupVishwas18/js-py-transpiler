@@ -196,3 +196,12 @@ code {
 .transpiler-svg img {
     height: 80vh;
 }
+
+.commentor-svg img {
+    height: 80vh;
+    margin-right: -20px;
+}
+
+.generated {
+    margin-top: -15px;
+}
