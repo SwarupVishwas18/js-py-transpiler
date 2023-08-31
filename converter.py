@@ -1,33 +1,6 @@
 import re
 
 
-js_code = """
-// program to find the factorial of a number
-
-// take input from the user
-const number = parseInt(prompt('Enter a positive integer: '));
-
-// checking if number is negative
-if (number < 0) {
-    console.log('Error! Factorial for negative number does not exist.');
-}
-
-// if number is 0
-else if (number === 0) {
-    console.log(`The factorial of ${number} is 1.`);
-}
-
-// if number is positive
-else {
-    let fact = 1;
-    for (i = 1; i <= number; i++) {
-        fact *= i;
-    }
-    console.log(`The factorial of ${number} is ${fact}.`);
-}
-"""
-
-
 def js_to_python(js):
     python = js
     # Replace let and const with variable assignments
@@ -39,6 +12,10 @@ def js_to_python(js):
 
     # Replace return with return
     python = re.sub(r"return (.*);", r"return \1", python)
+
+    python = re.sub(r"prompt", r"input", python)
+    python = re.sub(r"parseInt", r"int", python)
+    python = re.sub(r"//", r"#", python)
 
     # Replace console.log with print
     python = re.sub(r"console\.log\((.*)\)", r"print(\1)", python)
@@ -62,7 +39,3 @@ def js_to_python(js):
         updatePython += i + "\n"
 
     return updatePython
-
-
-python_code = js_to_python(js_code)
-print(python_code)
