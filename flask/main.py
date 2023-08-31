@@ -4,15 +4,18 @@ from flask import *
 from converter import js_to_python, indentToNbsp
 from readability import analyze_code
 from open import getComment
+from os.path import join
 
 app = Flask(__name__, template_folder="template")
+UPLOAD_FOLDER = "uploads"
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
 @app.route("/", methods=["POST", "GET"])
 def main():
     if request.method == "POST":
         f = request.files["js-file"]
-        f.save(f.filename)
+        f.save(join(app.config["UPLOAD_FOLDER"], f.filename))
         js_path = f.filename
         with open(js_path) as f:
             js_code = f.read()
@@ -29,7 +32,7 @@ def main():
 def comment():
     if request.method == "POST":
         f = request.files["js-file"]
-        f.save(f.filename)
+        f.save(join(app.config["UPLOAD_FOLDER"], f.filename))
         js_path = f.filename
         with open(js_path) as f:
             js_code = f.read()
@@ -45,7 +48,7 @@ def comment():
 def codeindex():
     if request.method == "POST":
         f = request.files["js-file"]
-        f.save(f.filename)
+        f.save(join(app.config["UPLOAD_FOLDER"], f.filename))
         py_path = f.filename
         (
             total_variables,
