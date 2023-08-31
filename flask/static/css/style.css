@@ -53,6 +53,7 @@ a {
     font-weight: bold;
     letter-spacing: 1px;
     transition: all ease-in-out 300ms;
+
 }
 
 footer {
@@ -150,9 +151,20 @@ header {
     height: 50vh;
     background-color: #0B2A3C;
     border-radius: 12px;
-    overflow-y: scroll;
-    color: aliceblue;
+    color: #DEEEFF;
     padding: 1rem;
+    overflow-y: scroll;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.js-code pre,
+.py-code pre {
+    font-family: 'Roboto Mono', monospace;
+
+}
+
+code {
+    background-color: transparent;
 }
 
 .center-btn-container {
@@ -175,21 +187,5 @@ header {
 }
 
 .transpiler-svg img {
-    margin-top: -15px;
-    height: 87vh;
-}
-.box {
-    width: 100px;
-    height: 70px;
-}
-.menu-link
-{
-    top: 20px;
-}
-.box .menuimg {
-    position: absolute;
-    width: 96px;
-    height: 47px;
-    top: 10px;
-    left: 190vh;
+    height: 80vh;
 }
