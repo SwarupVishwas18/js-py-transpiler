@@ -16,7 +16,7 @@ def main():
     if request.method == "POST":
         f = request.files["js-file"]
         f.save(join(app.config["UPLOAD_FOLDER"], f.filename))
-        js_path = f.filename
+        js_path = join(app.config["UPLOAD_FOLDER"], f.filename)
         with open(js_path) as f:
             js_code = f.read()
         python_code = js_to_python(js_code)
@@ -33,7 +33,7 @@ def comment():
     if request.method == "POST":
         f = request.files["js-file"]
         f.save(join(app.config["UPLOAD_FOLDER"], f.filename))
-        js_path = f.filename
+        js_path = join(app.config["UPLOAD_FOLDER"], f.filename)
         with open(js_path) as f:
             js_code = f.read()
         python_code = getComment(js_code)
@@ -49,7 +49,7 @@ def codeindex():
     if request.method == "POST":
         f = request.files["js-file"]
         f.save(join(app.config["UPLOAD_FOLDER"], f.filename))
-        py_path = f.filename
+        py_path = join(app.config["UPLOAD_FOLDER"], f.filename)
         (
             total_variables,
             meaningful_variables,
