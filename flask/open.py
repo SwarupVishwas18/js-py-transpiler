@@ -8,7 +8,7 @@ def avg(a, b):
     return (a + b) / 2
 
 
-prompt = f"GIve me python docstring for given function :\n\n{avg.__name__}{avg.__doc__}"
+prompt = f"Give me python docstring for given function :\n\n{avg.__name__}{avg.__doc__}"
 
 # print(prompt)
 response = openai.Completion.create(

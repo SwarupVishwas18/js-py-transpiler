@@ -16,6 +16,11 @@ body {
     box-sizing: border-box;
 }
 
+.readability-values {
+    color: #DEEEFF;
+    letter-spacing: 1.5px;
+}
+
 a {
     text-decoration: none;
     color: currentColor;

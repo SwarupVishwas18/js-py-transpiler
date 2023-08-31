@@ -20,29 +20,28 @@
 
             <ul class="links">
                 <li>
-                    <a href="">
+                    <a href="/">
                         Home
                     </a>
                 </li>
     
                 <li>
-                    <a href="">
+                    <a href="/">
                         Transpiler
                     </a>
                 </li>
     
                 <li>
-                    <a href="">
+                    <a href="/codeindex">
                         Readability Checker
                     </a>
                 </li>
     
                 <li>
-                    <a href="">
+                    <a href="/comment">
                         Comment Generator
                     </a>
                 </li>
-
                 <li id="goback">
                     Go Back
                 </li>
@@ -59,41 +58,24 @@
     <div class="code-converter">
         <main>
             <header>
-                <div class="js-header">
-                    <div class="lang-img">
-                        <img src="{{ url_for('static', filename='img/js.svg') }}" width="80" alt="JS Logo">
-                    </div>
-                    
-                </div>
+               
                 <div class="upload-file">
-                    <form action="/" method="post" id="form" enctype="multipart/form-data">
-                        <input type="file" value="JS File" accept=".js" name="js-file" id="file-input"  hidden>
+                    <form action="/codeindex" method="post" id="form" enctype="multipart/form-data">
+                        <input type="file" value="JS File" accept=".py" name="js-file" id="file-input"  hidden>
                         <button class="custom-file-btn" id="custom-file-btn">
                             <img src="{{ url_for('static', filename='img/add.png') }}" alt="Add" width="20"> Upload Your Code
                         </button>
                     </form>
                 </div>  
     
-                <div class="py-header">
-                 
-                    <div class="lang-img">
-                        <img src="{{ url_for('static', filename='img/python.svg') }}" width="80" alt="JS Logo">
-                    </div>
-                </div>
+              
             </header>
     
            
     
             <div class="transpilation-boxes">
-                <div class="js-code">
-                    <pre>
-                        <code class="language-javascript">
-{% for code in js %}
-{{ code }} 
-{% endfor %}
-</code>
-                    </pre>
-                </div>
+              
+               
                 <div class="py-code">
                     <pre>
                         <code class="language-python">
@@ -103,6 +85,31 @@
 </code>
                     </pre>
                 </div>
+                {% if readability_index %}
+                <div class="readability-values">
+                    <h2>
+                        Readability Percentage : {{ readability_index }}
+                    </h2>
+                    <br>
+                    <br>
+
+                    <h3>
+                        Meaningful/Total Variables : {{ meaningful_variables }} / {{ total_variables }}
+                    </h3>
+                    <br>
+                    <h3>
+                        Meaningful/Total Classes : {{ meaningful_class }} / {{ total_class }}
+                    </h3>
+                    <br>
+                    <h3>
+                        Meaningful/Total Function : {{ meaningful_functions }} / {{ total_functions }}
+                    </h3>
+                    <br>
+                    <h3>
+                        Functions With Docstring : {{ functions_with_docstrings }} 
+                    </h3>
+                </div>
+                {% endif %}
             </div>
             <!-- <div class="center-btn-container">
                 <button class="transpile-btn">
@@ -112,7 +119,7 @@
         </main>
 
         <div class="transpiler-svg">
-            <img src="{{ url_for('static', filename='img/Transpiler.svg') }}"  alt="Transpiler">
+            <img src="{{ url_for('static', filename='img/Readability.svg') }}"  alt="Transpiler">
         </div>
     </div>
 

@@ -2,6 +2,7 @@ from distutils.log import debug
 from fileinput import filename
 from flask import *
 from converter import js_to_python, indentToNbsp
+from readability import analyze_code
 
 app = Flask(__name__, template_folder="template")
 
@@ -45,15 +46,35 @@ def codeindex():
     if request.method == "POST":
         f = request.files["js-file"]
         f.save(f.filename)
-        js_path = f.filename
-        with open(js_path) as f:
-            js_code = f.read()
-        python_code = js_to_python(js_code)
-        js = js_code.split("\n")
-        python_code = indentToNbsp(python_code)
-        py = python_code.split("\n")
-        print(py)
-        return render_template("codeindex.html", js=js, py=py)
+        py_path = f.filename
+        (
+            total_variables,
+            meaningful_variables,
+            total_class,
+            meaningful_class,
+            meaningful_functions,
+            total_functions,
+            functions_with_docstrings,
+            meaningful_comments,
+            readability_index,
+        ) = analyze_code(py_path)
+        with open(py_path) as f:
+            py_code = f.read()
+            py = py_code.split("\n")
+
+        return render_template(
+            "codeindex.html",
+            py=py,
+            total_variables=total_variables,
+            meaningful_variables=meaningful_variables,
+            total_class=total_class,
+            meaningful_class=meaningful_class,
+            meaningful_functions=meaningful_functions,
+            total_functions=total_functions,
+            functions_with_docstrings=functions_with_docstrings,
+            meaningful_comments=meaningful_comments,
+            readability_index=readability_index,
+        )
     return render_template("codeindex.html")
 
 
